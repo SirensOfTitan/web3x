@@ -1,24 +1,14 @@
 /*
-  This file is part of web3x.
+  Copyright (c) 2019 xf00f
 
-  web3x is free software: you can redistribute it and/or modify
-  it under the terms of the GNU Lesser General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-
-  web3x is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General Public License
-  along with web3x.  If not, see <http://www.gnu.org/licenses/>.
+  This file is part of web3x and is released under the MIT License.
+  https://opensource.org/licenses/MIT
 */
 
 import { isNumber, isString } from 'util';
 import { Address } from '../address';
 import { Data, TransactionHash } from '../types';
-import { hexToNumber, numberToHex, sha3 } from '../utils';
+import { hexToBuffer, hexToNumber, numberToHex, sha3Buffer } from '../utils';
 
 export interface RawLogResponse {
   id?: string;
@@ -51,15 +41,11 @@ export function fromRawLogResponse(log: RawLogResponse): LogResponse {
   let id: string | null = log.id || null;
 
   // Generate a custom log id.
-  if (
-    typeof log.blockHash === 'string' &&
-    typeof log.transactionHash === 'string' &&
-    typeof log.logIndex === 'string'
-  ) {
-    const shaId = sha3(
+  if (isString(log.blockHash) && isString(log.transactionHash) && isString(log.logIndex)) {
+    const shaId = sha3Buffer(
       log.blockHash.replace('0x', '') + log.transactionHash.replace('0x', '') + log.logIndex.replace('0x', ''),
     );
-    id = 'log_' + shaId.replace('0x', '').substr(0, 8);
+    id = 'log_' + shaId.slice(0, 4).toString('hex');
   }
 
   const blockNumber = log.blockNumber !== null ? hexToNumber(log.blockNumber) : null;
