@@ -15,5 +15,6 @@
     "inlineSourceMap": true,
     "importHelpers": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts", "src/**/mock-*.ts", "src/**/fixtures/*"]
 }
