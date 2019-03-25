@@ -16,10 +16,7 @@ export class ContractFunctionEntry extends ContractEntry {
   constructor(entry: ContractEntryDefinition) {
     entry.inputs = entry.inputs || [];
     super(entry);
-    this.signature =
-      entry.type === 'constructor'
-        ? 'constructor'
-        : abiCoder.encodeFunctionSignature(abiCoder.abiMethodToString(entry));
+    this.signature = entry.type === 'constructor' ? 'constructor' : abiCoder.encodeFunctionSignature(this.asString());
   }
 
   public get constant() {

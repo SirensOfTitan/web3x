@@ -16,7 +16,7 @@ export class ContractEventEntry extends ContractEntry {
 
   constructor(entry: ContractEntryDefinition) {
     super(entry);
-    this.signature = abiCoder.encodeEventSignature(abiCoder.abiMethodToString(entry));
+    this.signature = abiCoder.encodeEventSignature(this.asString());
   }
 
   public getEventTopics(filter: object = {}) {

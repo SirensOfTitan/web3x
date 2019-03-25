@@ -29,10 +29,8 @@
     "build": "yarn clean && tsc -p tsconfig.cjs.json && node ./package.js",
     "lint": "tslint --project tsconfig.json 'src/**/*.ts' --fix",
     "test": "jest",
-    "cover": "jest --coverage && cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
-    "clean": "rm -rf ./dest ./dest-es",
-    "deploy": "yarn jest --clearCache && yarn cover && yarn build && npm publish dest && npm publish dest-es",
-    "patch_version": "yarn version --patch"
+    "clean": "rm -rf ./dest",
+    "deploy": "yarn jest --clearCache && yarn build && npm publish dest"
   },
   "jest": {
     "transform": {
@@ -50,12 +48,7 @@
     "reporters": [
       "jest-dot-reporter"
     ],
-    "rootDir": "./src",
-    "coverageDirectory": "../coverage",
-    "coveragePathIgnorePatterns": [
-      "./src/eth-lib",
-      "./src/ethers"
-    ]
+    "rootDir": "./src"
   },
   "dependencies": {
     "@types/levelup": "^3.1.0",

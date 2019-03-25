@@ -5,11 +5,15 @@
   https://opensource.org/licenses/MIT
 */
 
-import { abiCoder } from '../abi-coder';
+import { calculateStringForm } from './abi-string-form';
 import { ContractEntryDefinition } from './contract-abi-definition';
 
 export class ContractEntry {
-  constructor(protected entry: ContractEntryDefinition) {}
+  private stringForm: string;
+
+  constructor(protected entry: ContractEntryDefinition) {
+    this.stringForm = calculateStringForm(entry);
+  }
 
   public get name() {
     return this.entry.name;
@@ -20,6 +24,6 @@ export class ContractEntry {
   }
 
   public asString() {
-    return abiCoder.abiMethodToString(this.entry);
+    return this.stringForm;
   }
 }
