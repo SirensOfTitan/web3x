@@ -1,3 +1,10 @@
+/*
+  Copyright (c) 2019 xf00f
+
+  This file is part of web3x and is released under the MIT License.
+  https://opensource.org/licenses/MIT
+*/
+
 declare module 'merkle-patricia-tree' {
   import { Readable } from 'stream';
 
@@ -14,13 +21,21 @@ declare module 'merkle-patricia-tree' {
     public putRaw(key: Buffer | string, value: Buffer, cb: (err: Error) => void): void;
     public delRaw(key: Buffer | string, cb: (err: Error) => void): void;
     public createReadStream(): Readable;
-    public batch(ops: { type: 'get' | 'put' | 'del'; key: Buffer | string; value?: Buffer | string }[], cb: () => void): void;
+    public batch(
+      ops: { type: 'get' | 'put' | 'del'; key: Buffer | string; value?: Buffer | string }[],
+      cb: () => void,
+    ): void;
     public checkRoot(root: Buffer, cb: (exists: boolean) => void): void;
     public checkpoint(): void;
     public commit(cb: () => void): void;
     public revert(cb: () => void): void;
 
     public static prove(trie: Trie, key: string, cb: (err: Error, proof: any[]) => void): void;
-    public static verifyProof(rootHash: Buffer, key: string, proof: any[], cb: (err: Error, value: string) => void): void;
+    public static verifyProof(
+      rootHash: Buffer,
+      key: string,
+      proof: any[],
+      cb: (err: Error, value: string) => void,
+    ): void;
   }
 }
