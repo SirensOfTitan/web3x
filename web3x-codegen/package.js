@@ -15,10 +15,10 @@
   along with web3x.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import fs from 'fs';
-import { ContractAbiDefinition } from '../../contract';
+const package = require('./package.json');
+const { writeFileSync, copyFileSync, chmodSync } = require('fs');
 
-export function getFromTruffle(buildFile: string): { abi: ContractAbiDefinition; initData?: string } {
-  const { abi, bytecode: initData } = JSON.parse(fs.readFileSync(buildFile).toString());
-  return { abi, initData };
-}
+const { jest, scripts, devDependencies, ...pkg } = package;
+writeFileSync('./dest/package.json', JSON.stringify(pkg, null, '  '));
+copyFileSync('README.md', './dest/README.md');
+chmodSync('./dest/index.js', '755');

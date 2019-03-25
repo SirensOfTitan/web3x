@@ -15,39 +15,11 @@
   along with web3x.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { ContractAbiDefinition } from '../../contract/abi';
+const package = require('./package.json');
+const { writeFileSync, copyFileSync } = require('fs');
 
-interface FileSource {
-  source: 'files';
-  name: string;
-  abiFile: string;
-  initDataFile?: string;
-}
-
-interface EtherscanSource {
-  source: 'etherscan';
-  name: string;
-  net: string;
-  address: string;
-}
-
-interface TruffleSource {
-  source: 'truffle';
-  name: string;
-  buildFile: string;
-}
-
-interface InlineSource {
-  source: 'inline';
-  name: string;
-  abi: ContractAbiDefinition;
-  initData?: string;
-}
-
-export type ContractConfig = FileSource | EtherscanSource | TruffleSource | InlineSource;
-
-export interface Config {
-  web3xPath?: string;
-  outputPath?: string;
-  contracts: ContractConfig[];
-}
+const { jest, scripts, devDependencies, ...pkg } = package;
+writeFileSync('./dest/package.json', JSON.stringify(pkg, null, '  '));
+writeFileSync('./dest-es/package.json', JSON.stringify({ ...pkg, name: `${pkg.name}-es` }, null, '  '));
+copyFileSync('README.md', './dest/README.md');
+copyFileSync('README.md', './dest-es/README.md');

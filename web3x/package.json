@@ -12,10 +12,9 @@
     "url": "https://github.com/xf00f/web3x/issues"
   },
   "keywords": [
-    "Ethereum",
-    "TypeScript",
-    "API",
-    "Web3"
+    "ethereum",
+    "typescript",
+    "web3"
   ],
   "contributors": [
     {
@@ -71,8 +70,6 @@
     "bn.js": "^4.11.8",
     "browserify-aes": "^1.2.0",
     "elliptic": "^6.4.0",
-    "fs-extra": "^7.0.1",
-    "got": "^9.3.0",
     "hdkey": "^1.1.0",
     "idna-uts46-hx": "^2.3.1",
     "isomorphic-ws": "^4.0.1",
