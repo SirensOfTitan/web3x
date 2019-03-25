@@ -40,6 +40,7 @@
     "web3x": "^3.0.6"
   },
   "devDependencies": {
+    "@types/node": "^11.11.6",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0"
   }
