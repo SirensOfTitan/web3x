@@ -1,0 +1,31 @@
+{
+  "name": "web3x-monorepo-root",
+  "version": "3.0.6",
+  "license": "MIT",
+  "description": "Typescript port of web3.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xf00f/web3x.git"
+  },
+  "homepage": "https://github.com/xf00f/web3x",
+  "bugs": {
+    "url": "https://github.com/xf00f/web3x/issues"
+  },
+  "keywords": [
+    "Ethereum",
+    "TypeScript",
+    "API",
+    "Web3"
+  ],
+  "contributors": [
+    {
+      "name": "xf00f",
+      "email": "xf00f@protonmail.com",
+      "url": "https://github.com/xf00f"
+    }
+  ],
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  }
+}
