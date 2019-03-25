@@ -11,7 +11,7 @@ Contract interface code generator for `web3x`.
 
 Interacting with contracts without type safety is tedious at best, and dangerous at worst. `web3x-codegen` generates typings for contract ABIs either local, or remote from a simple configuration file called `contracts.json`.
 
-### Installing web3x-codegen
+### Installing
 
 ```
 yarn add -D web3x-codegen
